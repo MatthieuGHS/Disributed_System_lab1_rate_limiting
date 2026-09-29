@@ -1,0 +1,8 @@
+#!/bin/sh
+# Usage: tools/tlc Spec.tla   (reads Spec.cfg next to it)
+jar="$(dirname "$0")/tla2tools.jar"
+if [ ! -f "$jar" ]; then
+    echo "downloading tla2tools.jar..." >&2
+    curl -sSL -o "$jar" https://github.com/tlaplus/tlaplus/releases/latest/download/tla2tools.jar || exit 1
+fi
+exec java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -cleanup "$@"

@@ -1,0 +1,5 @@
+# Language server cache
+.expert/
+
+# TLA+ tools: downloaded on first use by tools/tlc
+tools/tla2tools.jar
